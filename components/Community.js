@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 
-import { motion } from 'framer-motion'
 import CommunityMarquee from "./CommunityMarquee";
+
+import Marquee from "react-fast-marquee";
 
 const BUZZWORTHY_COMMUNITY = [
   {
@@ -40,7 +41,7 @@ const TRENDING_PLUGINS = [
     description: 'A suite of integrated accessibility tools for your game-changing project.',
     src: '/images/stark.png'
   },
-]
+];
 
 function Community() {
   const marqueeTranslate = () => {
@@ -57,21 +58,20 @@ function Community() {
           repeat: Infinity,
         },
       },
-    }
-  }
+    };
+  };
 
   return (
     <Fragment>
-      <div className="p-3 bg-yellow-400 border-t-2 border-black overflow-x-hidden"
+      <div className="py-3 bg-yellow-400 border-t-2 border-black overflow-x-hidden"
       >
-        <motion.div
-          initial="initial"
-          animate="animate"
-          variants={marqueeTranslate()}
-          className="flex justify-between whitespace-nowrap"
+        <Marquee
+          gradient={false}
+          speed={65}
+          className="overflow-y-hidden"
         >
           <CommunityMarquee />
-        </motion.div>
+        </Marquee>
       </div>
       <div className="bg-black text-white pb-44">
         <div className="py-28 mx-4 md:mx-0">
@@ -112,7 +112,7 @@ function Community() {
         </div>
       </div>
     </Fragment>
-  )
+  );
 }
 
-export default Community
+export default Community;
